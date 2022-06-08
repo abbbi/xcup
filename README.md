@@ -16,7 +16,7 @@ Settings.
 INFO[0000] Login OK
 INFO[0000] Glider: [Niviuk Ikuma 2]
 INFO[0000] Publishing flight during upload.
-[..]
+INFO[0000] Upload OK: [The flight has been published under ID 1506695]
 ```
 
 # Usage:
