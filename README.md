@@ -16,7 +16,7 @@ Settings.
 INFO[0000] Login OK
 INFO[0000] Glider: [Niviuk Ikuma 2]
 INFO[0000] Publishing flight during upload.
-FATA[0000] Upload failed: [Eingeloggt als abi. Diese Datei wurde bereits unter der ID 1391661 hochgeladen] 
+[..]
 ```
 
 # Usage:
