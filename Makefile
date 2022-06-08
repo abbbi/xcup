@@ -18,3 +18,4 @@ release:
 clean:
 	@rm -rf linux
 	@rm -rf windows
+	@rm -f xcup*.zip
