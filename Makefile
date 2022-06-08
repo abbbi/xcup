@@ -1,3 +1,5 @@
+VERSION:=0.1
+
 all: windows linux_amd64 release
 
 linux_amd64:
@@ -11,7 +13,7 @@ windows:
 	mv xcup.exe windows/
 
 release:
-	zip -r xcup.zip linux/ windows/
+	zip -r xcup-${VERSION}.zip linux/ windows/
 
 clean:
 	@rm -rf linux
