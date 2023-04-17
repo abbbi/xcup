@@ -70,7 +70,7 @@ func init() {
 func json_dumps(data interface{}) []byte {
 	payload, err := json.Marshal(data)
 	if err != nil {
-		logrus.Error("Cant dump json response:")
+		logrus.Error("Can't dump json response:")
 		logrus.Fatal(err)
 	}
 	return payload
@@ -80,7 +80,7 @@ func json_loads(data []byte) jsonResponse {
 	var resp jsonResponse
 	err := json.Unmarshal([]byte(data), &resp)
 	if err != nil {
-		logrus.Error("Cant load json response:")
+		logrus.Error("Can't load json response:")
 		logrus.Fatal(err)
 	}
 	return resp
