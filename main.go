@@ -1,25 +1,25 @@
 /*
-	Copyright (C) 2022  Michael Ablassmeier <abi@grinser.de>
+Copyright (C) 2022  Michael Ablassmeier <abi@grinser.de>
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 package main
 
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -70,8 +70,7 @@ func init() {
 func json_dumps(data interface{}) []byte {
 	payload, err := json.Marshal(data)
 	if err != nil {
-		logrus.Error("Can't dump json response:")
-		logrus.Fatal(err)
+		logrus.Fatalf("Can't dump json response: %s", err)
 	}
 	return payload
 }
@@ -80,8 +79,7 @@ func json_loads(data []byte) jsonResponse {
 	var resp jsonResponse
 	err := json.Unmarshal([]byte(data), &resp)
 	if err != nil {
-		logrus.Error("Can't load json response:")
-		logrus.Fatal(err)
+		logrus.Fatalf("Can't load json response: %s", err)
 	}
 	return resp
 }
@@ -97,7 +95,7 @@ func httpReq(url string, payload []byte) jsonResponse {
 	if error != nil {
 		logrus.Fatal(error)
 	}
-	body, _ := ioutil.ReadAll(response.Body)
+	body, _ := io.ReadAll(response.Body)
 	logrus.Debugf("Response: [%s]", string(body))
 	return json_loads(body)
 }
@@ -145,7 +143,7 @@ func main() {
 	}
 	logrus.Info("Login OK")
 
-	igcdata, err := ioutil.ReadFile(options.File)
+	igcdata, err := os.ReadFile(options.File)
 	if err != nil {
 		log.Fatalf("Unable to read igc file: [%s]", err)
 	}

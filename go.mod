@@ -1,6 +1,6 @@
 module github.com/abbbi/xcup
 
-go 1.15
+go 1.16
 
 require (
 	github.com/jessevdk/go-flags v1.6.1
