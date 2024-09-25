@@ -89,11 +89,14 @@ func httpReq(url string, payload []byte) jsonResponse {
 	logrus.Debug(url)
 	logrus.Debugf("Request: [%s]", string(payload))
 
-	request, error := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+	if err != nil {
+		logrus.Fatal(err)
+	}
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
-	response, error := client.Do(request)
-	if error != nil {
-		logrus.Fatal(error)
+	response, err := client.Do(request)
+	if err != nil {
+		logrus.Fatal(err)
 	}
 	body, _ := io.ReadAll(response.Body)
 	logrus.Debugf("Response: [%s]", string(body))
