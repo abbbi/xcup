@@ -4,7 +4,7 @@ Publish your paraglider flights on DHV-XC via command line. Client
 implementation for the new DHV-XC (https://www.dhv-xc.de) API as described
 here:
 
-https://www.dhv.de/fileadmin/user_upload/files/2022/05/DHV_XC_Flight_Upload_Interface_Specification.pdf
+https://www.dhv.de/media/seiten/05_wettbewerb/DHVXC/DHV_XC_Flight_Upload_Interface_Specification.pdf
 
 Before using, you must configure an upload password in your DHV-XC User
 Settings.
